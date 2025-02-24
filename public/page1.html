@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="shortcut icon" href="asset/prof.png" \type="image/x-icon">
+    <title>QinHouse</title>
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
+
+    <style>
+        html {
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+            scroll-behavior: smooth;
+        }
+
+        
+
+        @font-face 
+          {
+            font-family: 'font1';
+            src: url('../public/Font/HelveticaNeueBold.otf');
+          }
+
+          @font-face 
+          {
+            font-family: 'font2';
+            src: url('../public/Font/Roboto-Bold.ttf');
+          } 
+
+          @font-face 
+          {
+            font-family: 'fontitalic';
+            src: url('../public/Font/HelveticaNeueMediumItalic.otf');
+          } 
+
+      
+
+        .cursor-dot{
+            width: 10px;
+            height: 10px;
+            background-color: #321e1e;
+            
+        }
+        .cursor-outline{
+            width: 30px;
+            height: 30px;
+            border: 2px solid transparent;
+            
+        }
+        .cursor-dot,
+        .cursor-outline{
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 60;
+            pointer-events: none;
+           
+        }
+
+        .hero {
+            letter-spacing: 0.4px;
+        }
+
+        .work span {
+            padding-left: 0;
+            transition: 0.3s ease-in-out;
+        }
+
+        .work:hover span {
+            padding-left: 0.75rem;
+        }
+
+        .isi span {
+            transform: rotate(-45deg);
+            transition: 0.3s ease-in-out;
+        }
+
+        .isi:hover span {
+            transform: rotate(0deg);
+        }
+
+        .etc span {
+            background: transparent;
+            position: absolute;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .etc:hover span {
+            visibility: visible;
+            opacity: 1;
+            background-color: transparent;
+        }
+
+        .foot {
+            padding: 0;
+            margin: 0;
+            clip-path: inset(0% 0% 5% 0%);
+            
+        }
+
+        #sidebar {
+        -webkit-transition: all 300ms cubic-bezier(0, 0.77, 0.58, 1);
+        transition: all 300ms cubic-bezier(0, 0.77, 0.58, 1);
+    }
+
+      #sidebar.show {
+          transform: translateX(0);
+      }
+
+        .mutar{
+            transform: rotate(180deg);
+            animation: rotate 5s linear infinite;
+        }
+        @keyframes rotate{
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+
+</head>
+
+<body class="scroll-auto bg-[#f3f1e0]">
+
+    <div
+        class="slide z-40 h-[50%] md:h-[50%] w-full md:p-40 pt-20  p-5 flex flex-col min-h-fit top-[-100%] md:justify-center border-b-2 border-[#f3f1e0] justify-end items-end fixed bg-[#321e1e] duration-500 ease">
+
+        <ul
+            class="duration-200 flex md:flex-row flex-col gap-7 md:justify-between justify-start md:items-center ease-oute w-[100%]">
+            <div class="kiri">
+                <li class="text-[#f3f1e0] md:text-[80px] text-[50px] etc"><a class="" href="index.html">HOME<span>
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </span></a></li>
+                <li class="text-[#f3f1e0] md:text-[80px] text-[50px] etc"><a class="" href="/public/account.html">ACCOUNT<span>
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </span></a></li>
+                <li class="text-[#f3f1e0] md:text-[80px] text-[50px] etc"><a class="" href="/public/loginsignin.html">LOGIN/SIGN IN<span>
+                            <ion-icon name="arrow-back-outline"></ion-icon>
+                        </span></a></li>
+            </div>
+            <div class="kanan font-semibold text-left md:text-right text-[#f3f1e0] text-[20px]">
+                <li class="hover:underline duration-300"><a class="" href=""
+                        target="_blank">Instagram</a></li>
+                <li class="hover:underline duration-300"><a class="" href=""
+                        target="_blank">Linkedin</a></li>
+                <li class="hover:underline duration-300"><a class=" " href="">Email</a></li>
+            </div>
+
+        </ul>
+    </div>
+
+    <!-- Sidebar start-->
+    <div id="containerSidebar" class="z-50">
+      <div class="navbar-menu relative z-50">
+          <nav id="sidebar"
+              class="fixed  flex w-full h-[95%] -translate-x-full flex-col overflow-y-auto bg-[#321e1e] border-e-2 border-b-2 rounded-br-lg rounded-tr-lg border-[#f3f1e0] pt-6 pb-8 sm:max-w-lg lg:w-full">
+              <!-- one category / navigation group -->
+              <div class="px-4 pt-5">
+                <div>
+
+                  <div class="flex justify-between px-5">
+                  <h1 class="mb-10 text-center text-[#f3f1e0] items-center font-[font1] text-2xl font-bold">KERANJANG</h1>
+
+                  <a href="" id="btnTutup" type="button"
+                          class="relative inline-flex items-center justify-center font-[font1] px-5 mb-5 overflow-hidden text-[#f3f1e0] bg-[#321e1e] font-semibold font-[Jakarta Plus Sans]  text-[#f3f1e0] transition duration-300 ease-out border border-[#f3f1e0] rounded-full group">
+                          <span class="relative">
+                          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                          </span>
+                      </a>
+                </button>
+                
+                </div>
+                  <div class="mx-auto  justify-center px-6 md:flex-wrap ">
+                    <div class="rounded-lg ">
+                      <div class="justify-between mb-6 rounded-lg bg-[#f3f1e0] p-6 sm:flex sm:justify-start">
+                        <img src="/public/Images/Group 427319370.png" alt="product-image" class="w-full rounded-lg sm:w-40" />
+                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                          <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">Side Table Ashtray</h2>
+                            <p class="mt-1 text-xs text-gray-700">Orange Cerah</p>
+                          </div>
+                          <div class="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="flex items-center border-gray-100">
+                              <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-[#321e1e] hover:text-blue-50"> - </span>
+                              <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
+                              <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-[#321e1e] hover:text-blue-50"> + </span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                              <p class="text-xl text-[#321e1e] font-medium title-font mb-1"> Rp 195.000</p>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="justify-between mb-6 rounded-lg bg- bg-[#f3f1e0] p-6 shadow-md sm:flex sm:justify-start">
+                        <img src="https://www.houseplant.com/cdn/shop/files/GREENGLASSGRINDERCLOSED_97d0f3ad-7314-4933-bbfd-2dd488c105b3_720x.jpg?v=1724257727" alt="product-image" class="w-full rounded-lg sm:w-40" />
+                        <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                          <div class="mt-5 sm:mt-0">
+                            <h2 class="text-lg font-bold text-gray-900">Glass Grinder</h2>
+                            <p class="mt-1 text-xs text-gray-700">Hijau Emerald</p>
+                          </div>
+                          <div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
+                            <div class="flex items-center border-gray-100">
+                              <span class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-[#321e1e] hover:text-blue-50"> - </span>
+                              <input class="h-8 w-8 border bg-white text-center text-xs outline-none" type="number" value="2" min="1" />
+                              <span class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-[#321e1e] hover:text-blue-50"> + </span>
+                            </div>
+                            <div class="flex items-center space-x-4">
+                              <p class="text-xl text-[#321e1e] font-medium title-font mb-1"> Rp 150.000</p>
+                              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Sub total -->
+                    <div class="mt-6 h-full  rounded-lg border bg-[#f3f1e0] p-6 shadow-md md:mt-0 ">
+                      <div class="mb-2 flex justify-between">
+                        <p class="text-[#321e1e]">Subtotal</p>
+                        <p class="text-[#321e1e]">Rp345.000</p>
+                      </div>
+                      <div class="flex justify-between">
+                        <p class="text-[#321e1e]">Biaya Admin</p>
+                        <p class="text-[#321e1e]">Rp5.000</p>
+                      </div>
+                      <hr class="my-4" />
+                      <div class="flex justify-between">
+                        <p class="text-lg font-bold text-[#321e1e]">Total</p>
+                        <div class="text-end">
+                          <p class="mb-1 text-lg  font-bold text-[#321e1e]">Rp350.000</p>
+                          <p class="text-sm text-[#321e1e]">Sudah termasuk biaya admin</p>
+                        </div>
+                      </div>
+                      <button  class="mt-6 w-full rounded-md bg-[#321e1e] py-1.5 font-medium text-[#f3f1e0] hover:bg-[#321a1a]"><a href="/public/checkout.html">Check out</a></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          <!-- navigation group end-->
+
+      </nav>
+  </div>
+</div>
+<!-- Sidebar end -->
+
+    <section class="w-full pt-8 " id="isi">
+        <!-- nav -->
+        <div class="flex justify-center ">
+            <nav class="flex z-40 justify-between mx-auto bg-transparent fixed items-center w-[92%]">
+                <div class="profile flex gap-2">
+                    <a href="#atas"><img id="profile" class="w-[50px] " class="" src="Images/Logoqinhouse.png"
+                            alt="hero">
+                          </a>
+
+                      <a href="" id="btnSidebarToggler" type="button"
+                          class="relative inline-flex items-center justify-center font-[font1] px-3 overflow-hidden text-[#f3f1e0] bg-[#321e1e] font-semibold font-[Jakarta Plus Sans] text-[19px] text-[#f3f1e0] transition duration-300 ease-out border border-[#f3f1e0] rounded-full group">
+                          <span class="relative"><svg class="w-7 h-7 text-[#f3f1e0]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                          </svg>
+                          </span>
+                      </a>
+
+                </div>
+                <div class="menu flex gap-1 items-center">
+
+                  
+                    <a href="#_" onclick="onToggle(this)"
+                        class="relative  inline-flex items-center justify-center font-[font1] px-4 py-[0.4rem] overflow-hidden text-[#f3f1e0] bg-[#321e1e] font-semibold font-[Jakarta Plus Sans] text-[19px] text-[#f3f1e0] transition duration-300 ease-out border border-[#f3f1e0] rounded-full group">
+                        <span class="relative">MENU</span>
+                    </a>
+                </div>
+
+                
+            </nav>
+        </div>
+        <!-- judul -->
+        <div class=" justify-center items-center pt-5 md:block ">
+            <div class="area flex justify-center items-center">
+                <p class="text-[#321e1e] z-40 font-semibold font-[font1] text-[30px]">Qin<span class="font-[fontitalic]">House</span></p>
+            </div>
+        </div>
+
+        <!-- hero -->
+
+        <div id="atas" class="mt-10">
+            <div class="container mx-auto px-4 py-8">
+              <div class="flex flex-wrap -mx-4">
+                <!-- Product Images -->
+                <div class="w-full md:w-1/2 px-4 mb-8">
+                  <img src="https://www.houseplant.com/cdn/shop/products/DSC05828_Orange_1728x.jpg?v=1737982276" alt="Product"
+                              class="w-full h-auto rounded-lg mb-4" id="mainImage">
+                  <div class="flex gap-4 py-4 justify-center overflow-x-auto">
+                    <img src="https://www.houseplant.com/cdn/shop/products/DSC05828_Orange_1728x.jpg?v=1737982276" alt="Thumbnail 1"
+                                  class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                  onclick="changeImage(this.src)">
+                    <img src="https://www.houseplant.com/cdn/shop/files/OrangeMacro_1728x.png?v=1717076555" alt="Thumbnail 2"
+                                  class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                  onclick="changeImage(this.src)">
+                    <img src="https://www.houseplant.com/cdn/shop/products/SidetablePDP_1728x.png?v=1717076555" alt="Thumbnail 3"
+                                  class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                  onclick="changeImage(this.src)">
+                    <img src="https://www.houseplant.com/cdn/shop/files/OrangewithJoints_1728x.png?v=1717076555" alt="Thumbnail 4"
+                                  class="size-16 sm:size-20 object-cover rounded-md cursor-pointer opacity-60 hover:opacity-100 transition duration-300"
+                                  onclick="changeImage(this.src)">
+                  </div>
+                </div>
+          
+                <!-- Product Details -->
+                <div class="w-full md:w-1/2 px-10">
+                <p class="text-[#321e1e] font-[fontitalic] font-medium mb-10">All ‎‎   / ‎ ‎  ASHTRAYS ‎  ‎ / ‎ ‎  SIDE TABLE ASHTRAYS </p>
+                  <h2 class="text-7xl font-[font1] tracking- text-[#321e1e] tracking-tighter font-bold mb-2">SIDE TABLE <br> ASHTRAY</h2>
+                  
+                  <div class="flex items-center mb-4">
+                    <span class="mr-3 text-[#321e1e] font-bold">4.0</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-6 text-yellow-500">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-6 text-yellow-500">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-6 text-yellow-500">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-6 text-yellow-500">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                      class="size-6 text-[#321e1e]">
+                      <path fill-rule="evenodd"
+                        d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                        clip-rule="evenodd" />
+                    </svg>
+                    <span class="ml-2 text-[#321e1e] font-bold">120 reviews</span>
+                    
+                  </div>
+                  <p class="text-[#321e1e] mb-6"> Side Table Ashtray atau asbak yang juga merupakan meja samping, tergantung dari sisi mana Anda melihatnya. </p>
+          
+
+                  <div class="mb-6">
+                    <span class="text-4xl text-[#321e1e] font-bold mr-2">Rp195.000</span>
+                    <span class="text-gray-500 line-through">Rp200.000</span>
+                  </div>
+          
+                  <div class="flex space-x-4 mb-6">
+                    <button
+                                  class="bg-[#321e1e] font-[font1] flex gap-2 items-center text-white px-6 py-1 rounded-md hover:bg-[#321e1e] focus:outline-none focus:ring-2 focus:ring-offset-2">
+                                  <svg class="w-6 h-6 text-[#f3f1e0]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M4 4a1 1 0 0 1 1-1h1.5a1 1 0 0 1 .979.796L7.939 6H19a1 1 0 0 1 .979 1.204l-1.25 6a1 1 0 0 1-.979.796H9.605l.208 1H17a3 3 0 1 1-2.83 2h-2.34a3 3 0 1 1-4.009-1.76L5.686 5H5a1 1 0 0 1-1-1Z" clip-rule="evenodd"/>
+                                  </svg>
+                                  Keranjang
+                              </button>
+                    <button
+                                  class="bg-gray-200 flex gap-2 items-center  text-[#321e1e] font-bold px-6 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2">
+                                  <svg xmlns="http://www.w3.org/2000/svg" fill="bg-red-600" viewBox="0 0 24 24"
+                                      stroke-width="1.5" stroke="currentColor" class="size-6">
+                                      <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                  </svg>
+                                  Wishlist
+                              </button>
+                  </div>
+          
+                  <div>
+                    <h3 class="text-lg font-semibold mb-2">Keunggulan</h3>
+                    <ul class="list-disc list-inside text-gray-700">
+                      <li> Asbak dan meja samping
+                        </li>
+                      <li>Porselen & baja tahan karat</li>
+                      <li>Sumur kecil, dalam, dan penangkap abu</li>
+                      <li>Meja yang dapat dilepas agar mudah dibersihkan</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- footer -->
+        <div class="flex justify-center items-start md:h-fit h-[240px]  w-full bg-[#321e1e]">
+            <div class="w-[92%] flex flex-col justify-center items-center">
+                <ul
+                    class="w-[100%] z-20 md:mt-[30px] mt-[20px] flex md:flex-row justify-between md:items-start items-center">
+                    <div
+                        class="kecil font-semibold text-left text-[#f3f1e0] text-[25px] md:text-[30px] besar w-[50%] flex flex-row gap-56 md:gap-20 justify-start items-start">
+                        <div class="kanan ">
+                            <li class="hover:underline duration-300"><a class="" href=""
+                                    target="_blank">Instagram</a></li>
+                            <li class="hover:underline duration-300"><a class="" href=""
+                                    target="_blank">Linkedin</a></li>
+                            <li class="hover:underline duration-300"><a class="" href="">Email</a>
+                            </li>
+                        </div>
+                    </div>
+                    <div class="cont flex md:flex-row flex-col md:justify-center items-end md:items-center gap-3 ">
+                        <img id="profile" class="w-[50px] md:hidden block " src="Images/Logoqinhouse.png"
+                            alt="hero">
+                        <p
+                            class="text-[#f3f1e0] bg-[#321e1e] hover:bg-[#321e1e] border border-[#f3f1e0] rounded-full py-1 px-4  md:text-[20px] font-[Jakarta Plus Sans] font-semibold">
+                            <a href="" class="" target="_blank">Lihat</a></p>
+                        <img id="profile" class="w-[50px] md:block hidden  " src="Images/Logoqinhouse.png"
+                            alt="hero">
+                    </div>
+                </ul>
+                
+                <svg width="1570" class="md:mt-[40px]  md:block hidden " height="335" viewBox="0 0 1606 300" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M82.8 329V64.26H0.774V5.66997H230.794V64.26H150.07V329H82.8ZM259.333 329V0.461987H324.433V138.908L316.621 128.492C322.118 114.315 330.943 103.899 343.095 97.244C355.536 90.3 370.003 86.828 386.495 86.828C404.434 86.828 420.058 90.5893 433.367 98.112C446.966 105.635 457.526 116.195 465.049 129.794C472.572 143.103 476.333 158.727 476.333 176.666V329H411.233V190.554C411.233 181.295 409.352 173.339 405.591 166.684C402.119 160.029 397.056 154.821 390.401 151.06C384.036 147.299 376.513 145.418 367.833 145.418C359.442 145.418 351.92 147.299 345.265 151.06C338.61 154.821 333.402 160.029 329.641 166.684C326.169 173.339 324.433 181.295 324.433 190.554V329H259.333ZM592.486 334.208C575.415 334.208 560.659 331.459 548.218 325.962C535.776 320.465 526.228 312.653 519.574 302.526C512.919 292.11 509.592 279.813 509.592 265.636C509.592 252.327 512.63 240.609 518.706 230.482C524.782 220.066 534.04 211.386 546.482 204.442C559.212 197.498 574.981 192.579 593.788 189.686L666.266 177.968V225.708L605.506 236.558C596.247 238.294 589.158 241.332 584.24 245.672C579.321 249.723 576.862 255.654 576.862 263.466C576.862 270.699 579.61 276.341 585.108 280.392C590.605 284.443 597.404 286.468 605.506 286.468C616.211 286.468 625.614 284.153 633.716 279.524C641.817 274.895 648.038 268.674 652.378 260.862C657.007 252.761 659.322 243.936 659.322 234.388V172.76C659.322 163.791 655.705 156.268 648.472 150.192C641.528 144.116 631.98 141.078 619.828 141.078C608.254 141.078 597.983 144.261 589.014 150.626C580.334 156.991 573.968 165.382 569.918 175.798L517.838 151.06C522.467 137.751 529.845 126.322 539.972 116.774C550.098 107.226 562.25 99.848 576.428 94.64C590.605 89.432 606.084 86.828 622.866 86.828C642.83 86.828 660.479 90.4447 675.814 97.678C691.148 104.911 703.011 115.038 711.402 128.058C720.082 140.789 724.422 155.689 724.422 172.76V329H663.662V290.808L678.418 288.204C671.474 298.62 663.806 307.3 655.416 314.244C647.025 320.899 637.622 325.817 627.206 329C616.79 332.472 605.216 334.208 592.486 334.208ZM772.165 329V92.036H832.925V138.908L829.453 128.492C834.95 114.315 843.775 103.899 855.927 97.244C868.368 90.3 882.835 86.828 899.327 86.828C917.266 86.828 932.89 90.5893 946.199 98.112C959.798 105.635 970.358 116.195 977.881 129.794C985.404 143.103 989.165 158.727 989.165 176.666V329H924.065V190.554C924.065 181.295 922.184 173.339 918.423 166.684C914.951 160.029 909.888 154.821 903.233 151.06C896.868 147.299 889.345 145.418 880.665 145.418C872.274 145.418 864.752 147.299 858.097 151.06C851.442 154.821 846.234 160.029 842.473 166.684C839.001 173.339 837.265 181.295 837.265 190.554V329H772.165ZM1031.97 329V0.461987H1097.07V210.952L1072.77 203.14L1177.36 92.036H1257.65L1171.72 187.516L1257.22 329H1183.44L1111.83 208.782L1149.59 199.234L1077.11 278.222L1097.07 240.464V329H1031.97ZM1379.14 334.208C1353.1 334.208 1330.39 328.132 1311.01 315.98C1291.91 303.539 1278.89 286.902 1271.95 266.07L1319.69 243.502C1325.76 256.233 1334.01 266.215 1344.42 273.448C1354.84 280.681 1366.41 284.298 1379.14 284.298C1388.4 284.298 1395.49 282.417 1400.41 278.656C1405.33 274.895 1407.79 269.687 1407.79 263.032C1407.79 259.56 1406.92 256.667 1405.18 254.352C1403.45 251.748 1400.84 249.433 1397.37 247.408C1393.9 245.383 1389.56 243.647 1384.35 242.2L1343.99 230.916C1324.61 225.419 1309.7 216.594 1299.29 204.442C1288.87 192.001 1283.66 177.389 1283.66 160.608C1283.66 145.852 1287.43 132.977 1294.95 121.982C1302.47 110.987 1313.03 102.452 1326.63 96.376C1340.23 90.0107 1355.85 86.828 1373.5 86.828C1396.65 86.828 1416.9 92.3253 1434.26 103.32C1451.91 114.025 1464.35 129.215 1471.59 148.89L1423.41 171.458C1419.94 161.621 1413.58 153.809 1404.32 148.022C1395.35 141.946 1385.08 138.908 1373.5 138.908C1365.11 138.908 1358.46 140.644 1353.54 144.116C1348.91 147.588 1346.59 152.362 1346.59 158.438C1346.59 161.621 1347.46 164.514 1349.2 167.118C1350.93 169.722 1353.68 172.037 1357.44 174.062C1361.5 176.087 1366.41 177.968 1372.2 179.704L1409.96 190.988C1429.63 196.775 1444.68 205.599 1455.09 217.462C1465.51 229.035 1470.72 243.357 1470.72 260.428C1470.72 275.184 1466.81 288.059 1459 299.054C1451.48 310.049 1440.92 318.729 1427.32 325.094C1413.72 331.17 1397.66 334.208 1379.14 334.208ZM1544.35 229.18L1540.01 5.66997H1605.11L1600.77 229.18H1544.35ZM1540.01 329V263.9H1605.11V329H1540.01Z"
+                        fill="#f3f1e0" />
+                </svg>
+
+                <svg width="308" height="60" class="md:hidden block mt-[47px] " viewBox="0 0 331 65" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M17.8399 67.8823V13.4706H0.981195V1.42868H48.2569V13.4706H31.6658V67.8823H17.8399ZM54.1225 67.8823V0.358294H67.5024V28.8129L65.8968 26.6722C67.0267 23.7583 68.8404 21.6175 71.338 20.2498C73.8951 18.8226 76.8684 18.109 80.258 18.109C83.9449 18.109 87.1561 18.8821 89.8915 20.4282C92.6864 21.9743 94.8569 24.1448 96.4031 26.9397C97.9492 29.6752 98.7223 32.8864 98.7223 36.5733V67.8823H85.3423V39.4277C85.3423 37.5248 84.9558 35.8894 84.1827 34.5217C83.4691 33.154 82.4285 32.0836 81.0608 31.3105C79.7525 30.5375 78.2064 30.1509 76.4224 30.1509C74.6979 30.1509 73.1517 30.5375 71.784 31.3105C70.4163 32.0836 69.3459 33.154 68.5728 34.5217C67.8592 35.8894 67.5024 37.5248 67.5024 39.4277V67.8823H54.1225ZM122.595 68.9527C119.086 68.9527 116.054 68.3878 113.497 67.2579C110.94 66.1281 108.977 64.5225 107.609 62.4412C106.242 60.3004 105.558 57.773 105.558 54.8592C105.558 52.1237 106.182 49.7154 107.431 47.634C108.68 45.4932 110.583 43.7093 113.14 42.2821C115.756 40.8549 118.997 39.8439 122.863 39.2493L137.759 36.8409V46.6528L125.271 48.8828C123.368 49.2396 121.911 49.864 120.9 50.756C119.889 51.5885 119.384 52.8076 119.384 54.4132C119.384 55.8999 119.949 57.0595 121.079 57.892C122.208 58.7245 123.606 59.1408 125.271 59.1408C127.471 59.1408 129.404 58.665 131.069 57.7136C132.734 56.7621 134.013 55.4836 134.904 53.878C135.856 52.2129 136.332 50.3992 136.332 48.4368V35.7705C136.332 33.927 135.588 32.3809 134.102 31.1321C132.675 29.8833 130.712 29.2589 128.215 29.2589C125.836 29.2589 123.725 29.9131 121.881 31.2213C120.097 32.5296 118.789 34.2541 117.957 36.3949L107.253 31.3105C108.204 28.5751 109.721 26.2262 111.802 24.2638C113.883 22.3014 116.381 20.785 119.295 19.7146C122.208 18.6442 125.39 18.109 128.839 18.109C132.942 18.109 136.57 18.8523 139.721 20.339C142.873 21.8256 145.311 23.907 147.036 26.5829C148.82 29.1995 149.712 32.262 149.712 35.7705V67.8823H137.224V60.0328L140.256 59.4976C138.829 61.6384 137.253 63.4223 135.529 64.8495C133.804 66.2173 131.872 67.2282 129.731 67.8823C127.59 68.5959 125.211 68.9527 122.595 68.9527ZM159.524 67.8823V19.1794H172.012V28.8129L171.299 26.6722C172.428 23.7583 174.242 21.6175 176.74 20.2498C179.297 18.8226 182.27 18.109 185.66 18.109C189.347 18.109 192.558 18.8821 195.293 20.4282C198.088 21.9743 200.259 24.1448 201.805 26.9397C203.351 29.6752 204.124 32.8864 204.124 36.5733V67.8823H190.744V39.4277C190.744 37.5248 190.358 35.8894 189.584 34.5217C188.871 33.154 187.83 32.0836 186.463 31.3105C185.154 30.5375 183.608 30.1509 181.824 30.1509C180.1 30.1509 178.553 30.5375 177.186 31.3105C175.818 32.0836 174.748 33.154 173.975 34.5217C173.261 35.8894 172.904 37.5248 172.904 39.4277V67.8823H159.524ZM212.922 67.8823V0.358294H226.302V43.6201L221.307 42.0145L242.804 19.1794H259.306L241.644 38.8033L259.217 67.8823H244.053L229.335 43.1741L237.095 41.2117L222.199 57.446L226.302 49.6856V67.8823H212.922ZM284.276 68.9527C278.924 68.9527 274.256 67.7039 270.272 65.2063C266.347 62.6493 263.671 59.23 262.244 54.9484L272.056 50.31C273.305 52.9265 274.999 54.9781 277.14 56.4648C279.281 57.9514 281.66 58.6948 284.276 58.6948C286.179 58.6948 287.636 58.3082 288.647 57.5352C289.658 56.7621 290.163 55.6917 290.163 54.324C290.163 53.6104 289.985 53.0157 289.628 52.54C289.271 52.0048 288.736 51.5291 288.022 51.1128C287.309 50.6966 286.417 50.3398 285.346 50.0424L277.051 47.7232C273.067 46.5934 270.004 44.7797 267.863 42.2821C265.723 39.725 264.652 36.722 264.652 33.2729C264.652 30.2401 265.425 27.5939 266.971 25.3342C268.517 23.0744 270.688 21.3202 273.483 20.0714C276.278 18.7631 279.489 18.109 283.116 18.109C287.874 18.109 292.036 19.2389 295.604 21.4986C299.232 23.6988 301.789 26.8208 303.276 30.8645L293.374 35.5029C292.661 33.481 291.353 31.8755 289.45 30.6861C287.606 29.4373 285.495 28.8129 283.116 28.8129C281.392 28.8129 280.024 29.1697 279.013 29.8833C278.062 30.5969 277.586 31.5781 277.586 32.8269C277.586 33.481 277.764 34.0757 278.121 34.6109C278.478 35.1461 279.043 35.6218 279.816 36.0381C280.649 36.4544 281.66 36.8409 282.849 37.1977L290.609 39.5169C294.653 40.7062 297.745 42.5199 299.886 44.9581C302.027 47.3367 303.097 50.2803 303.097 53.7888C303.097 56.8216 302.294 59.4678 300.689 61.7276C299.143 63.9873 296.972 65.7713 294.177 67.0795C291.382 68.3283 288.082 68.9527 284.276 68.9527ZM318.23 47.3664L317.338 1.42868H330.718L329.826 47.3664H318.23ZM317.338 67.8823V54.5024H330.718V67.8823H317.338Z"
+                        fill="#f3f1e0" />
+                </svg>
+
+
+            </div>
+        </div>
+    </section>
+
+
+          
+            <script>
+              function changeImage(src) {
+                      document.getElementById('mainImage').src = src;
+                  }
+            </script>
+          </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const navbar = document.getElementById("navbar");
+            const sidebar = document.getElementById("sidebar");
+            const btnTutup = document.getElementById("btnTutup");
+            const navTutup = document.getElementById("navTutup");
+            const navOpen = document.getElementById("navOpen");
+    
+            btnTutup.addEventListener("click", (e) => {
+                e.preventDefault();
+                sidebar.classList.toggle("show");
+                navTutup.classList.toggle("hidden");
+                navOpen.classList.toggle("hidden");
+            });
+    
+            sidebar.style.top = parseInt(navbar.clientHeight) - 1 + "px";
+        });
+    
+    
+        document.addEventListener("DOMContentLoaded", () => {
+            const navbar = document.getElementById("navbar");
+            const sidebar = document.getElementById("sidebar");
+            const btnSidebarToggler = document.getElementById("btnSidebarToggler");
+            const navClosed = document.getElementById("navClosed");
+            const navOpen = document.getElementById("navOpen");
+    
+            btnSidebarToggler.addEventListener("click", (e) => {
+                e.preventDefault();
+                sidebar.classList.toggle("show");
+                navClosed.classList.toggle("hidden");
+                navOpen.classList.toggle("hidden");
+            });
+    
+            sidebar.style.top = parseInt(navbar.clientHeight) - 1 + "px";
+        });
+    
+    
+            const cursorDot = document.querySelector("[data-cursor-dot]");
+            const cursorOutline = document.querySelector("[data-cursor-outline]");
+    
+            window.addEventListener("mousemove", function(ja) {
+                const posX = ja.clientX;
+                const posY = ja.clientY;
+    
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+    
+                 cursorOutline.animate({
+                    left: `${posX}px`,
+                    top: `${posY}px`
+                 }, {duration: 500, fill: "forwards"})
+            })
+    
+    
+    
+            const navItems = document.querySelector('.slide');
+            const button = document.querySelector('[onclick="onToggle(this)"]');
+            const balik = document.getElementById('etc1')
+    
+            function onToggle(e) {
+                navItems.classList.toggle('top-[0]'); 
+    
+                
+                const isOpen = navItems.classList.contains('top-[0]');
+    
+                
+                if (isOpen) {
+                    button.innerText = 'Tutup';
+                } else {
+                    button.innerText = 'Menu';
+                }
+            }
+    
+    
+    
+            
+            const profile = document.getElementById('profile');
+    
+           
+            function handleScroll() {
+                
+                const scrollPosition = window.scrollY;
+    
+                
+                const rotationDegree = scrollPosition * 0.5; 
+    
+                profile.style.transform = `rotate(${rotationDegree}deg)`;
+            }
+            window.addEventListener('scroll', handleScroll);
+        </script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    
+    </body>
+    
+    </html>

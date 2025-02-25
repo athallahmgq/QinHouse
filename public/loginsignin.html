@@ -24,27 +24,26 @@
         @font-face 
           {
             font-family: 'font1';
-            src: url('../public/Font/HelveticaNeueBold.otf');
+            src: url('/public/Font/HelveticaNeueBold.otf') format('opentype');
           }
 
           @font-face 
           {
             font-family: 'font2';
-            src: url('../public/Font/Roboto-Bold.ttf');
+            src: url('/public/Font/Roboto-Bold.ttf') format('truetype');
           } 
 
           @font-face 
           {
             font-family: 'fontitalic';
-            src: url('../public/Font/HelveticaNeueMediumItalic.otf');
-          } 
-
+            src: url('/public/Font/HelveticaNeueMediumItalic.otf') format('opentype');
+          }
       
     </style>
 
 </head>
 
- <body style="background-image: url(/public/Images/forqinhouse.png);" class="scroll-auto bg-[#f3f1e0] ">
+ <body style="background-image: url(/Images/forqinhouse.png);" class="scroll-auto bg-[#f3f1e0] ">
     
     <div id="login" class="min-h-screen text-[#321e1e]  flex justify-center">
         <div class="max-w-screen-xl m-0 sm:m-10 bg-[#f3f1e0] border-4 border-[#321e1e] shadow sm:rounded-lg flex justify-center flex-1">
@@ -52,7 +51,7 @@
                 <div class="flex justify-center gap-2">
                     
                     <a href="" class="mt-1 ">
-                        <a href="index.html"><img id="profile" class="w-[50px] " class="" src="Images/Logoqinhouse.png"
+                        <a href="index.html"><img id="profile" class="w-[50px] " class="" src="/Images/Logoqinhouse.png"
                             alt="hero">
                           </a>
                         <p class="text-[#321e1e] z-50 font-semibold font-[font1] text-[30px]">Qin<span class="font-[fontitalic]">House</span></p>
@@ -151,7 +150,7 @@
                 </div>
             </div>
             <div class="flex-1 bg-[#321e1e] text-center hidden lg:flex bg-cover rounded bg-no-repeat grayscale hover:grayscale-0 hover:backdrop:scale-105 transition-all duration-100" 
-            style="background-image: url('/public/Images/aranprime-tRcXnmFJT-0-unsplash.jpg');">
+            style="background-image: url('/Images/aranprime-tRcXnmFJT-0-unsplash.jpg');">
             </div>
         </div>
     </div>

@@ -1020,6 +1020,30 @@ video {
   height: auto;
 }
 
+.h-screen {
+  height: 100vh;
+}
+
+.h-80 {
+  height: 20rem;
+}
+
+.h-9 {
+  height: 2.25rem;
+}
+
+.h-\[30rem\] {
+  height: 30rem;
+}
+
+.h-\[31rem\] {
+  height: 31rem;
+}
+
+.h-\[35rem\] {
+  height: 35rem;
+}
+
 .max-h-full {
   max-height: 100%;
 }
@@ -1125,6 +1149,18 @@ video {
   width: 8rem;
 }
 
+.w-\[\] {
+  width: ;
+}
+
+.w-\[30\] {
+  width: 30;
+}
+
+.w-\[35rem\] {
+  width: 35rem;
+}
+
 .max-w-2xl {
   max-width: 42rem;
 }
@@ -1167,6 +1203,12 @@ video {
 
 .flex-grow {
   flex-grow: 1;
+}
+
+.border-spacing-5 {
+  --tw-border-spacing-x: 1.25rem;
+  --tw-border-spacing-y: 1.25rem;
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
 .-translate-x-1\/2 {
